@@ -20,6 +20,5 @@ public class Main {
         if((a%2)==0)
             System.out.println("Первое число \"" +a+ "\" - четное");
 
-
     }
 }
