@@ -29,6 +29,6 @@ public class Main {
                 Max = x;
         }
 
-        System.out.println("Максимальное число массива = " + Max);
+        System.out.println("Наибольшее число массива = " + Max);
     }
 }
