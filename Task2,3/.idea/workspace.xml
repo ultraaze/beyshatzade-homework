@@ -13,7 +13,7 @@
       </file>
     </leaf>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="333" />
     <option name="y" value="115" />
     <option name="width" value="1364" />
@@ -73,8 +73,8 @@
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Task1" />
-      <option name="PROGRAM_PARAMETERS" value="1 2 3" />
+      <module name="Task2,3" />
+      <option name="PROGRAM_PARAMETERS" value="2 35 66" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">

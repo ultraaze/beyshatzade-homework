@@ -7,7 +7,7 @@ public class Main {
 
         if ((a<0)||(b<0))  System.out.println("Есть  отрицательное число");
         if (b!=0) System.out.println("Результат деления " + (float)a/b);
-        if (a>b) System.out.println("a>b");
+        if (a>b) System.out.println("a>b dddd");
         else if (a<b) System.out.println("a<b");
         else System.out.println("a=b");
         if((a%2)==0) System.out.println("Число а четное");
