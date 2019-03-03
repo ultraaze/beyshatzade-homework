@@ -134,3 +134,4 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/java,windows,intellij
 q/.idea/workspace.xml
 *.xml
+*.xml___jb_tmp___

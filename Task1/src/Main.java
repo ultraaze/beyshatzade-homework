@@ -15,7 +15,7 @@ public class Main {
         else if (a<b)
             System.out.println("Второе число больше первого");
         else
-            System.out.println("Числа равны");
+            System.out.println("Числа равны ");
 
         if((a%2)==0)
             System.out.println("Первое число \"" +a+ "\" - четное");
