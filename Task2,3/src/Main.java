@@ -10,25 +10,23 @@ public class Main {
         System.out.println(Arrays.toString(Arr));
 
         int Sum=0;
-        for (int j: Arr){
-            Sum+=j;
-        }
-        System.out.println("Сумма элементов массива = " + Sum);
-        for (int z: Arr) {
-            if (z>1000){
-                System.out.println("Массив - массивный");
-                break;
-            }
-        }
-// Здесь начинается 3 задача
+        boolean Check = true;
         int Max = Arr[0];
-        for (int x: Arr) {
-            if (x == 100500)
+
+        for (int z: Arr) {
+            Sum+=z;
+            if ((z>1000)&&(Check)){
+                System.out.println("Массив - массивный");
+                Check = false;
+            }
+            if (z == 100500)
                 continue;
-            else if (Max<x)
-                Max = x;
+            else if ((Max<z)||(Max==100500))
+                Max = z;
         }
 
+        System.out.println("Сумма элементов массива = " + Sum);
         System.out.println("Наибольшее число массива = " + Max);
+
     }
 }
