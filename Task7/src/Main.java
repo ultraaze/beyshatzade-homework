@@ -14,20 +14,20 @@ public class Main {
 
         AbstractItem[] Arr = new AbstractItem[]{HP, Apple, Depo, Samsumg, Bosch, Metabo, AEG, Beko, Vihr, Daewoo};
 
-        int Sum,SumMemory,MaxPower;
-        Sum = SumMemory = MaxPower = 0 ;
+        int Sum, SumMemory, MaxPower;
+        Sum = SumMemory = MaxPower = 0;
 
         System.out.println();
         for (int i = 0; i < Arr.length; i++) {
             System.out.println(Arr[i].toString());
-            Sum+=Arr[i].getCost();
+            Sum += Arr[i].getCost();
             if (Arr[i] instanceof Powertool) {
                 if ((((Powertool) Arr[i]).getPower()) > MaxPower) {
                     MaxPower = ((Powertool) Arr[i]).getPower();
                 }
             }
             if (Arr[i] instanceof Computer) {
-                SumMemory+= ((Computer) Arr[i]).getMemory();
+                SumMemory += ((Computer) Arr[i]).getMemory();
             }
         }
         System.out.println();
@@ -37,21 +37,12 @@ public class Main {
         System.out.println("Все товары, которые можно вернуть: ");
 
         for (int i = 0; i < Arr.length; i++) {
-            if ((Arr[i] instanceof Returnable)&&(Arr[i] instanceof Computer)) {
-                System.out.println(Arr[i].toString() + " документы " + (((Laptop) Arr[i]).getRequiredDocuments()) +
-                        " в течении " + (((Laptop) Arr[i]).getDaysForReturn()) + " дней");
-            }
-            else if ((Arr[i] instanceof Returnable)&&(Arr[i] instanceof Powertool)){
-                if ((Arr[i] instanceof Drill)){
-                System.out.println(Arr[i].toString() + " документы " + (((Drill) Arr[i]).getRequiredDocuments())+
-                        " в течении "+(((Drill) Arr[i]).getDaysForReturn()) + " дней");
-                }
-                else if ((Arr[i] instanceof Saw)){
-                System.out.println(Arr[i].toString() + " документы " + (((Saw) Arr[i]).getRequiredDocuments())+
-                        " в течении "+(((Saw) Arr[i]).getDaysForReturn()) + " дней");
-                }
-            }
-        }
+            if (Arr[i] instanceof Returnable) {
+                System.out.println(Arr[i].toString() + " документы " + (((Returnable) Arr[i]).getRequiredDocuments()) +
+                        " в течении " + (((Returnable) Arr[i]).getDaysForReturn()) + " дней");
 
+            }
+
+        }
     }
 }
