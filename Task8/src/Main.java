@@ -4,9 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList Winners = new ArrayList();
-        ArrayList Losers = new ArrayList();
-        ArrayList Fraud = new ArrayList();
+        ArrayList winners = new ArrayList();
+        ArrayList losers = new ArrayList();
+        ArrayList fraud = new ArrayList();
 
         Person[] Gamers = new Person[]{new Master(), new Player(), new Player(),
                 new Master(), new Player(), new Player()};
@@ -15,37 +15,36 @@ public class Main {
             for (int i = 1; i < 6; i++) {
                 if (Gamers[0].getAction() == 0) {
                     if (Gamers[i].getAction() == 0)
-                        Losers.add(Gamers[i]);
+                        losers.add(Gamers[i]);
                     else if ((Gamers[i].getAction() == 1) || (Gamers[i].getAction() == 2))
-                        Winners.add(Gamers[i]);
+                        winners.add(Gamers[i]);
                 } else {
                     if (Gamers[i].getAction() == 0)
-                        Winners.add(Gamers[i]);
+                        winners.add(Gamers[i]);
                     else if (Gamers[i].getAction() == 1)
-                        Losers.add(Gamers[i]);
+                        losers.add(Gamers[i]);
                     else {
-                        Fraud.add(Gamers[i]);
+                        fraud.add(Gamers[i]);
                         throw new MiJeDogovarivalisDomaNePryatatsaException();
                     }
                 }
             }
 
-            String string = Winners.toString()
+            String string = winners.toString()
                     .replace("[", "")
                     .replace("]", "");
             System.out.println("Winners: \n" + string);
-            String string1 = Losers.toString()
+            String string1 = losers.toString()
                     .replace("[", "")
                     .replace("]", "");
             System.out.println("\nLosers: \n" + string1);
 
 
         } catch (MiJeDogovarivalisDomaNePryatatsaException e) {
-            String string = Fraud.toString()
+            String string = fraud.toString()
                     .replace("[", "")
                     .replace("]", "");
             System.out.println("<" + string + ">" + " играет нечестно");
         }
-
     }
 }

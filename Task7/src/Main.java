@@ -40,9 +40,7 @@ public class Main {
             if (Arr[i] instanceof Returnable) {
                 System.out.println(Arr[i].toString() + " документы " + (((Returnable) Arr[i]).getRequiredDocuments()) +
                         " в течении " + (((Returnable) Arr[i]).getDaysForReturn()) + " дней");
-
             }
-
         }
     }
 }
