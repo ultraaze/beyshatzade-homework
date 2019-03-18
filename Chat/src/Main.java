@@ -12,23 +12,36 @@ public class Main {
         long start = 0;
         long finish = 0;
         String bot_phrase = "";
+        String file_address = "d:/result.txt";
+        BufferedWriter writer = null;
+        BufferedReader reader = null;
 
         try {
 
-            BufferedReader reader = new BufferedReader(new FileReader("d:/result.txt"));
+            reader = new BufferedReader(new FileReader(file_address));
             System.out.println("Сохраненные переписки:");
-            for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+            String line;
+            do {
+                line = reader.readLine();
                 System.out.println(line);
             }
+            while (line != null);
 
-            reader.close();
-        } catch (Exception e) {
-            System.out.println("Проблемы со считываемым файлом");
+        } catch (FileNotFoundException e) {
+            System.out.println("Не удалось найти файл");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                System.out.println("Проблемы с закрытием файла");
+            }
         }
 
         try {
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("d:/result.txt", true));
+            writer = new BufferedWriter(new FileWriter(file_address, true));
             writer.write("Начало беседы" + "\r\n");
             System.out.println("Начало беседы (Чтобы завершить беседу и сохранить переписку отправь в консоль END)");
 
@@ -55,20 +68,25 @@ public class Main {
                     }
                 } else {
                     finish = start;
-                    String name1 = message.toUpperCase();
-                    String name2 = name1.replace('!', '.');
-                    String name3 = name2.replace('?', '.');
+                    String name1 = message.toUpperCase().replace('!', '.').replace('?', '.').replace(" ", "");
                     Date dateNow = new Date();
                     SimpleDateFormat formatForDateNow = new SimpleDateFormat("H:m");
-                    System.out.println("Бот: " + name3 + bot_phrase);
-                    writer.write(formatForDateNow.format(dateNow) + " Бот: " + name3 + bot_phrase + "\r\n");
+                    System.out.println("Бот: " + name1 + bot_phrase);
+                    writer.write(formatForDateNow.format(dateNow) + " Бот: " + name1 + bot_phrase + "\r\n");
                     bot_phrase = "";
                     i++;
                 }
             }
-            writer.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Не удалось найти файл");
         } catch (Exception e) {
-            System.out.println("Проблемы с записью файла");
+            e.printStackTrace();
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException e) {
+                System.out.println("Проблемы с закрытием файла");
+            }
         }
     }
 }
