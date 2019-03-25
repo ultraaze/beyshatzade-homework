@@ -16,6 +16,16 @@ class ClientThread {
     private String timeNow;
     private SimpleDateFormat formatForDateNow;
 
+
+    TrippleDes  crypt;
+    {
+        try {
+            crypt = new TrippleDes ();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public ClientThread(String ip, int port) {
         this.ip = ip;
         this.port = port;
@@ -41,7 +51,7 @@ class ClientThread {
         System.out.print("Press your name: ");
         try {
             name = inputUser.readLine();
-            out.write((CaesarСipher.encode("Hello " + name, 12)) + "\n");
+            out.write(crypt.encrypt("Hello " + name) + "\n");
             out.flush();
         } catch (IOException ignored) {
         }
@@ -66,12 +76,12 @@ class ClientThread {
             try {
                 while (true) {
                     str = in.readLine();
-                    String aaa = CaesarСipher.decode(str, 12);
+                    String temp = crypt.decrypt(str);
                     if (str.equals("stop")) {
                         ClientThread.this.downService();
                         break;
                     }
-                    System.out.println(aaa);
+                    System.out.println(temp);
                 }
             } catch (IOException e) {
                 ClientThread.this.downService();
@@ -96,7 +106,7 @@ class ClientThread {
                         break;
                     } else {
                         String text = "(" + timeNow + ") " + name + ": " + userWord;
-                        out.write((CaesarСipher.encode(text, 12)) + "\n");
+                        out.write(crypt.encrypt(text) + "\n");
                     }
                     out.flush();
                 } catch (IOException e) {
