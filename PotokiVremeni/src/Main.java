@@ -10,16 +10,13 @@ public class Main {
     static boolean check1 = false;
 
     public static void main(String[] args) {
-
         BufferedWriter writer = null;
         BufferedReader reader = null;
         long start = 0;
         long finish = 0;
-
         for (int i = 0; i < length; i++) {
             list.add("Строка " + i);
         }
-
         start = System.currentTimeMillis();
 
         for (int i = 0; i < length; i++) {
@@ -33,24 +30,17 @@ public class Main {
             }
         }
         finish = System.currentTimeMillis();
-        System.out.println("Скорость выполнения последовательного = " + (finish - start) + " мс");
-
+        System.out.println("Скорость последовательной записи = " + (finish - start) + " мс");
         ThreadGroup group = new ThreadGroup("Write");
         start = System.currentTimeMillis();
-
-
         for (int i = 0; i < length; i++) {
             new Printer(group, i).start();
         }
         while (group.activeCount() != 0) ;
-
         finish = System.currentTimeMillis();
-        System.out.println("Скорость выполнения параллельного = " + (finish - start) + " мс");
-
-
+        System.out.println("Скорость параллельной записи = " + (finish - start) + " мс");
         File file = new File("d:/strings_sequential/");
         File[] files = file.listFiles();
-
         String line;
         start = System.currentTimeMillis();
         for (File f : files) {
@@ -59,25 +49,20 @@ public class Main {
                 line = reader.readLine();
                 stringsSequential.add(line);
                 reader.close();
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         finish = System.currentTimeMillis();
-        System.out.println("Скорость чтения последовательного = " + (finish - start) + " мс");
-
-
+        System.out.println("Скорость последовательного чтения  = " + (finish - start) + " мс");
         ThreadGroup group1 = new ThreadGroup("Reader");
         start = System.currentTimeMillis();
         for (File f : files) {
             new Reader(group1, f).start();
         }
-
         while (group1.activeCount() != 0) ;
         finish = System.currentTimeMillis();
-
-        System.out.println("Скорость чтения || = " + (finish - start) + " мс");
+        System.out.println("Скорость параллельного чтения = " + (finish - start) + " мс");
     }
 }
 

@@ -15,12 +15,9 @@ public class Writer extends Thread {
 
     @Override
     public void run() {
-
         scanner = new Scanner(System.in);
         message = scanner.nextLine();
-
         try {
-
             writer = new BufferedWriter(new FileWriter(file_address));
             writer.write(message + "\r\n");
         } catch (IOException e) {

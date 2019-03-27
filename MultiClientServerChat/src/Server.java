@@ -3,7 +3,6 @@ import java.net.*;
 import java.util.LinkedList;
 
 public class Server {
-
     public static final int port = 8080;
     public static LinkedList<ServerThread> serverList = new LinkedList<>();
 

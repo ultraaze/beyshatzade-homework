@@ -7,7 +7,6 @@ import javax.crypto.spec.DESedeKeySpec;
 import org.apache.commons.codec.binary.Base64;
 
 public class TrippleDes {
-
     private static final String UNICODE_FORMAT = "UTF8";
     public static final String DESEDE_ENCRYPTION_SCHEME = "DESede";
     private KeySpec ks;
@@ -27,7 +26,6 @@ public class TrippleDes {
         cipher = Cipher.getInstance(myEncryptionScheme);
         key = skf.generateSecret(ks);
     }
-
 
     public String encrypt(String unencryptedString) {
         String encryptedString = null;

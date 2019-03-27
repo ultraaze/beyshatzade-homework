@@ -1,9 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-
 class ServerThread extends Thread {
-
     private Socket socket;
     private BufferedReader in;
     private BufferedWriter out;

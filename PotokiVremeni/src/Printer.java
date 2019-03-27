@@ -9,7 +9,7 @@ public class Printer extends Thread {
     ThreadGroup group;
 
     Printer(ThreadGroup group, int i) {
-        this.group=group;
+        this.group = group;
         this.i = i;
         names = i + ".txt";
     }
@@ -20,9 +20,8 @@ public class Printer extends Thread {
             writer = new BufferedWriter(new FileWriter("d:/strings_parallel/" + names));
             writer.write(Main.list.get(i));
             writer.close();
-            } catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

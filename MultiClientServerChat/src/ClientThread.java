@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 class ClientThread {
-
     private Socket socket;
     private BufferedReader in;
     private BufferedWriter out;
@@ -15,12 +14,11 @@ class ClientThread {
     private Date dateNow;
     private String timeNow;
     private SimpleDateFormat formatForDateNow;
+    TrippleDes crypt;
 
-
-    TrippleDes  crypt;
     {
         try {
-            crypt = new TrippleDes ();
+            crypt = new TrippleDes();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -90,7 +88,6 @@ class ClientThread {
     }
 
     public class Sender extends Thread {
-
         @Override
         public void run() {
             while (true) {

@@ -17,13 +17,14 @@ public class HistoryWriter implements Runnable {
     }
 
     public void run() {
-
-        try {
-            file.write(name + "\r\n");
-            file.flush();
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        synchronized (file) {
+            try {
+                file.write(name + "\r\n");
+                file.flush();
+                file.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

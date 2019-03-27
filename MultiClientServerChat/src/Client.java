@@ -1,5 +1,4 @@
 public class Client {
-
     public static String ip = "localhost";
     public static int port = 8080;
 
