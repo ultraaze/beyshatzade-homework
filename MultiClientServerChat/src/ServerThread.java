@@ -35,10 +35,10 @@ class ServerThread extends Thread {
                     Thread thread1 = new Thread(printer1);
                     thread1.start();
 
-                    for (ServerThread vr : Server.serverList) {
-                        if (vr == this) continue;
-                        vr.out.write(word + "\n");
-                        vr.out.flush();
+                    for (ServerThread all : Server.serverList) {
+                        if (all == this) continue;
+                        all.out.write(word + "\n");
+                        all.out.flush();
                     }
                 }
             } catch (NullPointerException ignored) {
@@ -55,10 +55,7 @@ class ServerThread extends Thread {
                 socket.close();
                 in.close();
                 out.close();
-                for (ServerThread vr : Server.serverList) {
-                    if (vr.equals(this)) vr.interrupt();
-                    Server.serverList.remove(this);
-                }
+                Server.serverList.removeIf(value -> value.equals(this));
             }
         } catch (IOException ignored) {
         }

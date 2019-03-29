@@ -1,10 +1,10 @@
 import java.io.*;
 import java.net.*;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Server {
     public static final int port = 8080;
-    public static LinkedList<ServerThread> serverList = new LinkedList<>();
+    public static ArrayList<ServerThread> serverList = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(port);

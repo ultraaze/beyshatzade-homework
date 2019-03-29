@@ -75,10 +75,6 @@ class ClientThread {
                 while (true) {
                     str = in.readLine();
                     String temp = crypt.decrypt(str);
-                    if (str.equals("stop")) {
-                        ClientThread.this.downService();
-                        break;
-                    }
                     System.out.println(temp);
                 }
             } catch (IOException e) {
@@ -97,14 +93,8 @@ class ClientThread {
                     formatForDateNow = new SimpleDateFormat("HH:mm");
                     timeNow = formatForDateNow.format(dateNow);
                     userWord = inputUser.readLine();
-                    if (userWord.equals("stop")) {
-                        out.write("stop" + "\n");
-                        ClientThread.this.downService();
-                        break;
-                    } else {
-                        String text = "(" + timeNow + ") " + name + ": " + userWord;
-                        out.write(crypt.encrypt(text) + "\n");
-                    }
+                    String text = "(" + timeNow + ") " + name + ": " + userWord;
+                    out.write(crypt.encrypt(text) + "\n");
                     out.flush();
                 } catch (IOException e) {
                     ClientThread.this.downService();
