@@ -46,10 +46,10 @@ class ClientThread {
     }
 
     private void setName() {
-        System.out.print("Press your name: ");
+        System.out.print("What is your name?: ");
         try {
             name = inputUser.readLine();
-            out.write(crypt.encrypt("Hello " + name) + "\n");
+            out.write(crypt.encrypt("Hi, " + name) + "\n");
             out.flush();
         } catch (IOException ignored) {
         }
@@ -61,6 +61,7 @@ class ClientThread {
                 socket.close();
                 in.close();
                 out.close();
+
             }
         } catch (IOException ignored) {
         }
@@ -97,6 +98,7 @@ class ClientThread {
                     out.write(crypt.encrypt(text) + "\n");
                     out.flush();
                 } catch (IOException e) {
+
                     ClientThread.this.downService();
                 }
             }
