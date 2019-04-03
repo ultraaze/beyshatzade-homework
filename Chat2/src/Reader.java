@@ -27,7 +27,7 @@ public class Reader extends Thread {
             line = reader.readLine();
             Date dateNow = new Date();
             SimpleDateFormat formatForDateNow = new SimpleDateFormat("H:m");
-            if ((start - buffer) > 3000)
+            if ((start - buffer) > 10800000)
                 System.out.println(formatForDateNow.format(dateNow) + " " + line.toUpperCase().replace('!', '.').replace('?', '.').replace(" ", "") + "чТОТОДАВНОТЕБЯНЕВИДНО");
             else
                 System.out.println(formatForDateNow.format(dateNow) + " " + line.toUpperCase().replace('!', '.').replace('?', '.').replace(" ", ""));
