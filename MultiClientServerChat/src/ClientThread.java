@@ -22,6 +22,7 @@ class ClientThread {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public ClientThread(String ip, int port) {
@@ -46,10 +47,11 @@ class ClientThread {
     }
 
     private void setName() {
-        System.out.print("What is your name?: ");
+        System.out.print("What is your name? ");
         try {
             name = inputUser.readLine();
-            out.write(crypt.encrypt("Hi, " + name) + "\n");
+            out.write(Caesar.encode(name) + "\n");
+            //   out.write( name + "\n");
             out.flush();
         } catch (IOException ignored) {
         }
@@ -75,7 +77,8 @@ class ClientThread {
             try {
                 while (true) {
                     str = in.readLine();
-                    String temp = crypt.decrypt(str);
+                    String temp = Caesar.decode(str);
+                    //  String temp = str;
                     System.out.println(temp);
                 }
             } catch (IOException e) {
@@ -95,7 +98,8 @@ class ClientThread {
                     timeNow = formatForDateNow.format(dateNow);
                     userWord = inputUser.readLine();
                     String text = "(" + timeNow + ") " + name + ": " + userWord;
-                    out.write(crypt.encrypt(text) + "\n");
+                    out.write(Caesar.encode(text) + "\n");
+                    //  out.write(text + "\n");
                     out.flush();
                 } catch (IOException e) {
 

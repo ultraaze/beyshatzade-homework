@@ -1,10 +1,11 @@
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Server {
     public static final int port = 8080;
-    public static ArrayList<ServerThread> serverList = new ArrayList<>();
+    public static List<ServerThread> serverList = new CopyOnWriteArrayList();
 
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(port);
