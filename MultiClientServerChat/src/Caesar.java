@@ -5,9 +5,9 @@ public class Caesar {
 
     public static void main(String args[]) {
 
-        String line = encode("you left personal chat with");
-        System.out.println(line);
-        System.out.println(decode(line));
+//        String line = encode("missed message");
+//        System.out.println(line);
+//        System.out.println(decode(line));
     }
 
     public static String decode(String enc) {

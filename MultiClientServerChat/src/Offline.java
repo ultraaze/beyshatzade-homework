@@ -3,7 +3,7 @@ import java.io.IOException;
 public class Offline implements Runnable {
     private String name;
     private String name1;
-    private boolean AMG = true;
+    private boolean isWork = true;
     Thread thread;
 
     public Offline(String name, String name1) {
@@ -14,18 +14,18 @@ public class Offline implements Runnable {
     }
 
     public synchronized void demoMethod() {
-        while (AMG) {
+        while (isWork) {
             for (ServerThread all : Server.serverList) {
                 try {
                     if (name.equals(all.nickname)) {
                         try {
-                            all.out.write(name1 + "\n");
+                            all.out.write("yueeqp yqeemsq -> " + name1 + "\n");   //missed message
                             all.out.flush();
                         } catch (IOException e) {
                             e.printStackTrace();
                         } catch (NullPointerException ignore) {
                         } finally {
-                            AMG = false;
+                            isWork = false;
                         }
                     }
                 } catch (NullPointerException ignore) {
